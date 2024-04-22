@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := asdadsad
+BUILD_ARTIFACT_NAME := mini_bot
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-asdadsad.elf \
+mini_bot.elf \
 
 MAP_FILES += \
-asdadsad.map \
+mini_bot.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-asdadsad.list \
+mini_bot.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: asdadsad.elf secondary-outputs
+main-build: mini_bot.elf secondary-outputs
 
 # Tool invocations
-asdadsad.elf asdadsad.map: $(OBJS) $(USER_OBJS) C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "asdadsad.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="asdadsad.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+mini_bot.elf mini_bot.map: $(OBJS) $(USER_OBJS) C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-asdadsad.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "asdadsad.list"
+mini_bot.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "mini_bot.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) asdadsad.elf asdadsad.list asdadsad.map default.size.stdout
+	-$(RM) default.size.stdout mini_bot.elf mini_bot.list mini_bot.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

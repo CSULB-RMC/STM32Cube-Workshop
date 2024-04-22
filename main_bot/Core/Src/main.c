@@ -168,8 +168,7 @@ int main(void)
     TxHeader.RTR = CAN_RTR_DATA;
     TxHeader.ExtId = 400;
 
-
-    TIM1->CCR1 = 0;
+    TIM1->CCR1 = 1000;
     TIM1->CCR2 = 0;
     TIM2->CCR1 = 0;
     TIM2->CCR3 = 0;
@@ -203,7 +202,7 @@ int main(void)
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
 
-			  TIM1->ARR = 1000;
+			  TIM1->ARR = 2500;
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }
@@ -217,7 +216,7 @@ int main(void)
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
-			  TIM2->ARR = 1000;
+			  TIM2->ARR = 2500;
 			  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }
@@ -231,7 +230,7 @@ int main(void)
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
-			  TIM3->ARR = 1000;
+			  TIM3->ARR = 2500;
 			  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }

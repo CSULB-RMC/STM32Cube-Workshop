@@ -4953,3 +4953,5 @@ java.lang.NullPointerException: Cannot invoke "javax.swing.JTextField.getText()"
 2024-04-21 20:47:26,785 [INFO] CADModel:114 - Register for checkConnection events
 2024-04-21 20:47:26,854 [INFO] OpenFileManager:343 - Restore cursor
 2024-04-21 20:47:44,056 [INFO] NvicIntPanel:101 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,518x196,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2024-04-21 23:38:32,798 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2024-04-21 23:38:32,799 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

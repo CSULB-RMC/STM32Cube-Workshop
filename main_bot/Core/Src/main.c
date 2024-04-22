@@ -205,11 +205,9 @@ int main(void)
 
 			  TIM1->ARR = 1000;
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, x);
- //			  TIM3->CCR2 = x;
- //			  TIM3->CCR1 = x;
 			  datacheck = 0;
 		  }
-		  else if(RxHeader.ExtId == 17 || RxHeader.ExtId == 18)
+		  else if(RxHeader.ExtId == 21)
 		  {
 			  for(int i = 0; i < 8; i++){
 				  TxData[i] = RxData[i];
@@ -220,19 +218,21 @@ int main(void)
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
 			  TIM2->ARR = 1000;
-			  TIM1->ARR = 1000;
-			  if(x < 550 && x > 450)
-			  {
-				  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1000);
-			  }
-			  else{
-				  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
-			  }
-
 			  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, x);
-			  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, x);
- //			  TIM2->CCR1 = x;
- //			  TIM2->CCR3 = x;
+			  datacheck = 0;
+		  }
+		  else if(RxHeader.ExtId == 23)
+		  {
+			  for(int i = 0; i < 8; i++){
+				  TxData[i] = RxData[i];
+			  }
+			  HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
+
+
+			  x = CAN_MESSAGE_CONVERSION(RxData);
+
+			  TIM3->ARR = 1000;
+			  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }
 	  }

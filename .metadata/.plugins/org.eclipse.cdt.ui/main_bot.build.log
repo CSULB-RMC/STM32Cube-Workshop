@@ -1,0 +1,17 @@
+22:32:57 **** Incremental Build of configuration Debug for project main_bot ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "main_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\main_bot\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="main_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: main_bot.elf
+ 
+arm-none-eabi-size  main_bot.elf 
+arm-none-eabi-objdump -h -S main_bot.elf  > "main_bot.list"
+   text	   data	    bss	    dec	    hex	filename
+  17516	     12	   1972	  19500	   4c2c	main_bot.elf
+Finished building: default.size.stdout
+ 
+Finished building: main_bot.list
+ 
+
+22:32:58 Build Finished. 0 errors, 0 warnings. (took 1s.26ms)
+

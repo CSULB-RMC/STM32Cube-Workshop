@@ -1,10 +1,10 @@
-13:47:01 **** Incremental Build of configuration Debug for project main_bot ****
+12:29:54 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
 arm-none-eabi-size  main_bot.elf 
    text	   data	    bss	    dec	    hex	filename
-  17552	     12	   1972	  19536	   4c50	main_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
 
-13:47:02 Build Finished. 0 errors, 0 warnings. (took 262ms)
+12:29:54 Build Finished. 0 errors, 0 warnings. (took 332ms)
 

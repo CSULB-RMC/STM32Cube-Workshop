@@ -1,161 +1,70 @@
-15:27:32 **** Incremental Build of configuration Debug for project mini_bot ****
+12:02:37 **** Incremental Build of configuration Debug for project main_bot ****
+make -j12 all 
+arm-none-eabi-size  main_bot.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17540	     12	   1972	  19524	   4c44	main_bot.elf
+Finished building: default.size.stdout
+ 
+12:02:51 **** Incremental Build of configuration Debug for project main_bot ****
+make -j12 all 
+arm-none-eabi-size  main_bot.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17540	     12	   1972	  19524	   4c44	main_bot.elf
+Finished building: default.size.stdout
+ 
+12:05:21 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
+arm-none-eabi-gcc -o "main_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\main_bot\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="main_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: main_bot.elf
  
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
+arm-none-eabi-size  main_bot.elf 
+arm-none-eabi-objdump -h -S main_bot.elf  > "main_bot.list"
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
-Finished building: mini_bot.list
+Finished building: main_bot.list
  
-15:27:37 **** Incremental Build of configuration Debug for project mini_bot ****
+12:16:55 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
-arm-none-eabi-size  mini_bot.elf 
+arm-none-eabi-size  main_bot.elf 
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
-15:28:18 **** Incremental Build of configuration Debug for project mini_bot ****
+12:21:03 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
+arm-none-eabi-size  main_bot.elf 
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
-Finished building: mini_bot.list
- 
-15:28:57 **** Incremental Build of configuration Debug for project mini_bot ****
+12:23:21 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc -o "main_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\main_bot\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="main_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: main_bot.elf
  
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
+arm-none-eabi-size  main_bot.elf 
+arm-none-eabi-objdump -h -S main_bot.elf  > "main_bot.list"
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
-Finished building: mini_bot.list
+Finished building: main_bot.list
  
-15:29:35 **** Incremental Build of configuration Debug for project mini_bot ****
+12:28:07 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
+arm-none-eabi-size  main_bot.elf 
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
  
-Finished building: mini_bot.list
- 
-15:29:59 **** Incremental Build of configuration Debug for project mini_bot ****
+12:29:54 **** Incremental Build of configuration Debug for project main_bot ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
+arm-none-eabi-size  main_bot.elf 
    text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
+  17632	     12	   1972	  19616	   4ca0	main_bot.elf
 Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:30:25 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:31:04 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:31:51 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:32:36 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:33:21 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
- 
-15:33:47 **** Incremental Build of configuration Debug for project mini_bot ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F446xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: mini_bot.elf
- 
-arm-none-eabi-size  mini_bot.elf 
-arm-none-eabi-objdump -h -S mini_bot.elf  > "mini_bot.list"
-   text	   data	    bss	    dec	    hex	filename
-  17804	     12	   1972	  19788	   4d4c	mini_bot.elf
-Finished building: default.size.stdout
- 
-Finished building: mini_bot.list
  

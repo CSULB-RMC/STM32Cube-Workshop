@@ -191,10 +191,20 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  int x = 0;
 	  if (datacheck){
-		  if(RxHeader.ExtId == 19)
+		  if(RxHeader.ExtId == 15 || RxHeader.ExtId == 16 || RxHeader.ExtId == 17 || RxHeader.ExtId == 18)
 		  {
-			  for(int i = 0; i < 8; i++){
+			  TxHeader.ExtId = RxHeader.ExtId;
+			  for(int i = 0; i < 4; i++){
 				  TxData[i] = RxData[i];
+			  }
+			  // HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
+			  datacheck = 0;
+		  }
+		  else if(RxHeader.ExtId == 19)
+		  {
+			  TxHeader.ExtId = 400;
+			  for(int i = 0; i < 8; i++){
+
 			  }
 			  HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
 
@@ -208,6 +218,7 @@ int main(void)
 		  }
 		  else if(RxHeader.ExtId == 21)
 		  {
+			  TxHeader.ExtId = 400;
 			  for(int i = 0; i < 8; i++){
 				  TxData[i] = RxData[i];
 			  }
@@ -216,12 +227,29 @@ int main(void)
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
-			  TIM2->ARR = 2500;
-			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, x);
+			  TIM2->ARR = 1000;
+			  // retract
+			  if(x == 50){
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 1000);
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+			  }
+			  // extend
+			  else if(x == 150){
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 1000);
+			  }
+			  else{
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 0);
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
+			  }
+
+			  TIM1->ARR = 2500;
+
 			  datacheck = 0;
 		  }
 		  else if(RxHeader.ExtId == 23)
 		  {
+			  TxHeader.ExtId = 400;
 			  for(int i = 0; i < 8; i++){
 				  TxData[i] = RxData[i];
 			  }
@@ -236,6 +264,7 @@ int main(void)
 		  }
 		  else if(RxHeader.ExtId == 25)
 		  {
+			  TxHeader.ExtId = 400;
 			  for(int i = 0; i < 8; i++){
 				  TxData[i] = RxData[i];
 			  }
@@ -246,6 +275,11 @@ int main(void)
 
 			  TIM3->ARR = 2500;
 			  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, x);
+			  datacheck = 0;
+		  }
+
+		  else
+		  {
 			  datacheck = 0;
 		  }
 	  }

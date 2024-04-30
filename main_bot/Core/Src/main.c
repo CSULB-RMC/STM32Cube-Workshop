@@ -60,6 +60,7 @@ CAN_HandleTypeDef hcan1;
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart2;
 
@@ -75,6 +76,7 @@ static void MX_CAN1_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -143,6 +145,7 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   //  uint32_t pwmData[9];
   //  pwmData[0] = 10;
@@ -168,19 +171,20 @@ int main(void)
     TxHeader.RTR = CAN_RTR_DATA;
     TxHeader.ExtId = 400;
 
-    TIM1->CCR1 = 2000;
+    TIM1->CCR1 = 0;
     TIM1->CCR2 = 0;
     TIM2->CCR1 = 0;
     TIM2->CCR3 = 0;
-    TIM3->ARR = 200;
     TIM3->CCR1 = 0;
     TIM3->CCR2 = 0;
+    TIM4->CCR1 = 0;
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -201,11 +205,12 @@ int main(void)
 			  // HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
 			  datacheck = 0;
 		  }
+		  // conveyer
 		  else if(RxHeader.ExtId == 19)
 		  {
 			  TxHeader.ExtId = 400;
 			  for(int i = 0; i < 8; i++){
-
+				  TxData[i] = RxData[i];
 			  }
 			  HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
 
@@ -213,10 +218,11 @@ int main(void)
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
 
-			  TIM1->ARR = 2500;
+			  TIM1->ARR = 1000;
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }
+		  // Arm
 		  else if(RxHeader.ExtId == 21)
 		  {
 			  TxHeader.ExtId = 400;
@@ -244,10 +250,10 @@ int main(void)
 				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0);
 			  }
 
-			  TIM1->ARR = 2500;
 
 			  datacheck = 0;
 		  }
+		  // digger
 		  else if(RxHeader.ExtId == 23)
 		  {
 			  TxHeader.ExtId = 400;
@@ -259,10 +265,18 @@ int main(void)
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
-			  TIM3->ARR = 2500;
-			  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, x);
+			  TIM3->ARR = 1000;
+			  TIM1->ARR = 1000;
+
+			  if(x == 500){
+				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 1000);
+			  }else if(x == 600){
+				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+			  }
+			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, x);
 			  datacheck = 0;
 		  }
+		  // servo
 		  else if(RxHeader.ExtId == 25)
 		  {
 			  TxHeader.ExtId = 400;
@@ -274,8 +288,10 @@ int main(void)
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
-			  TIM3->ARR = 2500;
+			  TIM3->ARR = 1000;
+			  TIM4->ARR = 1000;
 			  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, x);
+			  __HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, x);
 			  datacheck = 0;
 		  }
 
@@ -408,7 +424,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 72-1;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 2500-1;
+  htim1.Init.Period = 1500-1;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
@@ -486,7 +502,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 71-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 2500-1;
+  htim2.Init.Period = 1500-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -549,7 +565,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 72-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 2500-1;
+  htim3.Init.Period = 1500-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -587,6 +603,65 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
+
+}
+
+/**
+  * @brief TIM4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 72-1;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 1000;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+  HAL_TIM_MspPostInit(&htim4);
 
 }
 

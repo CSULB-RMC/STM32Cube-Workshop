@@ -173,14 +173,16 @@ int main(void)
 
     TIM1->CCR1 = 0;
     TIM1->CCR2 = 0;
-    TIM2->CCR1 = 0;
+    TIM2->CCR1 = 1000;
+    TIM2->CCR2 = 1000;//TODOS
     TIM2->CCR3 = 0;
-    TIM3->CCR1 = 0;
+    TIM3->CCR1 = 1000;
     TIM3->CCR2 = 0;
     TIM4->CCR1 = 0;
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); //TODOS
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
@@ -267,11 +269,14 @@ int main(void)
 
 			  TIM3->ARR = 1000;
 			  TIM1->ARR = 1000;
+			  TIM2->ARR = 1000;//TODOS
 
 			  if(x == 500){
 				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 1000);
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 1000);//TODOS
 			  }else if(x == 600){
 				  __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+				  __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, 0);//TODOS
 			  }
 			  __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, x);
 			  datacheck = 0;
@@ -284,7 +289,6 @@ int main(void)
 				  TxData[i] = RxData[i];
 			  }
 			  HAL_CAN_AddTxMessage(&hcan1, &TxHeader, TxData, &TxMailbox);
-
 
 			  x = CAN_MESSAGE_CONVERSION(RxData);
 
@@ -500,7 +504,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 71-1;
+  htim2.Init.Prescaler = 72-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 1500-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -532,6 +536,10 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+	{
+	  Error_Handler();
+	}
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();

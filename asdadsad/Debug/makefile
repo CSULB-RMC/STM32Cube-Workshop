@@ -60,8 +60,8 @@ all: main-build
 main-build: mini_bot.elf secondary-outputs
 
 # Tool invocations
-mini_bot.elf mini_bot.map: $(OBJS) $(USER_OBJS) C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\test\STM32CubeIDE\workspace_1.15.0\asdadsad\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+mini_bot.elf mini_bot.map: $(OBJS) $(USER_OBJS) /Users/lehopancake/Desktop/STM32Cube-Workshop/asdadsad/STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "mini_bot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/lehopancake/Desktop/STM32Cube-Workshop/asdadsad/STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="mini_bot.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
